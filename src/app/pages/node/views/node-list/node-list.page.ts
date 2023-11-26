@@ -28,13 +28,16 @@ export class NodeListPage {
     this.store.dispatch(getParentNodes());
     this.nodes$ = this.store.select(selectParentNodes);
     this.platform.backButton.pipe(takeUntil(this.destroy)).subscribe(() => {
-      (navigator as any).app.exitApp();
+      if (window.location.pathname == '/node') {
+        (navigator as any).app.exitApp();
+      }
     });
   }
 
   ionViewWillLeave() {
     this.destroy.next();
     this.destroy.complete();
+    console.log('ionViewWillLeave');
   }
 
   onView(node: NodeModel): void {

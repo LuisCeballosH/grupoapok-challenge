@@ -52,6 +52,7 @@ export class CreatePage {
   }
 
   ionViewWillLeave() {
+    console.log('object');
     this.destroy.next();
     this.destroy.complete();
   }
