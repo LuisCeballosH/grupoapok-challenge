@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <div
+    class="flex justify-between items-center p-5 border border-l-0 border-r-0 border-t-0"
+  >
+    <h3 class="uppercase font-bold">Create</h3>
+    <a routerLink="/node/create" class="bg-red-500 rounded p-1 text-white">
+      New
+    </a>
+  </div>
+  <div id="container">
+    <ul class="list-none">
+      <li
+        class="border-solid border-b-2 px-5 py-4 flex"
+        *ngFor="let node of nodes$ | async"
+      >
+        <span class="flex-1">{{node.title}}</span>
+        <button
+          class="bg-blue-500 rounded p-1 text-white"
+          (click)="onView(node)"
+        >
+          view
+        </button>
+      </li>
+    </ul>
+  </div>
+</ion-content>

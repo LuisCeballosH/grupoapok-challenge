@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+  <h3 class="uppercase font-bold p-5 border border-l-0 border-r-0 border-t-0">
+    Create
+  </h3>
+  <div class="p-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label class="block mb-2 font-bold">Parent Node</label>
+      <select
+        formControlName="parent"
+        class="border w-full rounded p-2 border-gray-400 mb-3"
+      >
+        <option value="">Seleccione</option>
+        <option *ngFor="let node of nodes$ | async" [value]="node.id">
+          {{node.title}}
+        </option>
+      </select>
+      <label class="block mb-2 font-bold">Title</label>
+      <input
+        type="text"
+        formControlName="title"
+        class="border w-full rounded p-2 border-gray-400 mb-3"
+      />
+      <div class="flex justify-center">
+        <button type="submit" class="bg-blue-500 rounded p-1 text-white">
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</ion-content>
